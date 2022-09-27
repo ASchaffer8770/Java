@@ -12,10 +12,10 @@ class Item {
 
     //Getters
     public String getName() {
-        return name;
+        return this.name;
     }
     public double getPrice() {
-        return price;
+        return this.price;
     }
 
     //Setters
@@ -24,8 +24,10 @@ class Item {
     }
 
     public void setPrice(double price) {
-        this.price = price
+        this.price = price;
     }
+
+    public Item(){}
 
 
 }
