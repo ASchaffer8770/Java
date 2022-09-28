@@ -11,6 +11,7 @@ public class GorillaTest {
 		gorilla.eatBananas();
 		gorilla.eatBananas();
 		gorilla.climb();
+		gorilla.displayEnergy();
 	}
 
 }
