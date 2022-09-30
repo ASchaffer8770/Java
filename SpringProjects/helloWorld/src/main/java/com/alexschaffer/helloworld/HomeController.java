@@ -15,4 +15,5 @@ public class HomeController {
 	public String world() {
 		return "Class level annotations are cool too!";
 	}
+	
 }
