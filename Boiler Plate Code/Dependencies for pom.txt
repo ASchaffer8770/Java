@@ -7,3 +7,10 @@ Dependencies for pom.xml
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
 </dependency>
+
+
+Application.properties folder
+spring.mvc.view.prefix=/WEB-INF/
+
+jsp page for loop 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
