@@ -14,3 +14,29 @@ spring.mvc.view.prefix=/WEB-INF/
 
 jsp page for loop 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+********************************************************************************
+CSS/STYLING IN STS
+
+1) resources -> static -> new folder (css/style.css) 
+
+2)Create custome css file with selectors
+
+3)Use link tag in each one of the .jsp files
+
+BOOTSTRAP
+
+1) import bootstrap into dependencies (3 dependency to copy)
+
+2) 
+
+********************************************************************************
+New Spring App Setup Order
+
+1)pom.xml - dependencies and then the Application.properties - config
+
+2)New Package in the main/java folder to create controller folder
+
+3) create controller class inside of the new package
+
+4) Create the WEB-INF folder in the src folder in order to create you jsp files
