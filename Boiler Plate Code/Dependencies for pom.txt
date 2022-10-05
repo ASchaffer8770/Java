@@ -7,10 +7,19 @@ Dependencies for pom.xml
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
 </dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-validation</artifactId>
+</dependency> 
 
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Application.properties folder
 spring.mvc.view.prefix=/WEB-INF/
+spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 jsp page for loop 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -40,3 +49,16 @@ New Spring App Setup Order
 3) create controller class inside of the new package
 
 4) Create the WEB-INF folder in the src folder in order to create you jsp files
+
+=================================================================================
+
+Connecting to MySQL 
+
+Paste into Applications.properties folder
+
+spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
+spring.datasource.username=<<dbuser>>
+spring.datasource.password=<<dbpassword>>
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+
