@@ -23,7 +23,8 @@ spring.jpa.hibernate.ddl-auto=update
 
 jsp page for loop 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>  
 ********************************************************************************
 CSS/STYLING IN STS
 
@@ -37,7 +38,33 @@ BOOTSTRAP
 
 1) import bootstrap into dependencies (3 dependency to copy)
 
-2) 
+2)     <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>webjars-locator</artifactId>
+        <version>0.30</version>
+    </dependency>
+    
+    <!-- BOOTSTRAP DEPENDENCIES -->
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>5.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>3.6.0</version>
+    </dependency>
+
+3) COPY CODE INTO HEAD OF EACH JSP FILE
+<!-- for Bootstrap CSS -->
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<!-- YOUR own local CSS -->
+<link rel="stylesheet" href="/css/main.css"/>
+<!-- For any Bootstrap that uses JS or jQuery-->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
 
 ********************************************************************************
 New Spring App Setup Order
