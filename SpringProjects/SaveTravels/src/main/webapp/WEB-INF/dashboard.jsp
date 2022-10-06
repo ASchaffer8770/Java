@@ -25,10 +25,11 @@
 			<tbody>
 				<c:forEach var="eachExpense" items="${expenseList }">
 					<tr>
-						<td><c:out value="${eachExpense.expense }" /></td>
+						<td> <a href="/details"><c:out value="${eachExpense.expense }" /></a></td>
 						<td><c:out value="${eachExpense.vendor }" /></td>
 						<td>$ ${eachExpense.amount }</td>
-						<td>Edit | Delete</td>
+						<td> <a href="/expenses/edit/${eachExpense.id}">Edit</a> |
+						<a href="/expense/delete/${eachExpense.id }">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

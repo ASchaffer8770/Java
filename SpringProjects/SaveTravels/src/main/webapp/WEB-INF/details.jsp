@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Details</title>
 </head>
 <body>
-
+	<h1>Details of Expense</h1>
 </body>
 </html>
