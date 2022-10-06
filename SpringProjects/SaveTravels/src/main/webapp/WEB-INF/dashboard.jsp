@@ -19,17 +19,26 @@
 					<th>Expense</th>
 					<th>Vendor</th>
 					<th>Amount</th>
-					<th>Actions</th>
+					<th colspan=2>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="eachExpense" items="${expenseList }">
 					<tr>
-						<td> <a href="/details"><c:out value="${eachExpense.expense }" /></a></td>
+						<td> <a href="/expenses/${eachExpense.id }"><c:out value="${eachExpense.expense }" /></a></td>
 						<td><c:out value="${eachExpense.vendor }" /></td>
 						<td>$ ${eachExpense.amount }</td>
-						<td> <a href="/expenses/edit/${eachExpense.id}">Edit</a> |
-						<a href="/expense/delete/${eachExpense.id }">Delete</a></td>
+						<td> <a href="/expenses/edit/${eachExpense.id}" class="btn btn-warning">Edit</a> 
+						
+						
+							<form action="/expenses/delete/${eachExpense.id}" method="POST">
+							
+							<input type="hidden" name="_method" value="delete" />
+							<button type="submit" class="btn btn-danger">Delete</button>
+							
+							</form>
+						
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

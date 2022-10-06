@@ -30,6 +30,14 @@ public class HomeController {
 		model.addAttribute("expenseList", allExpenses);
 		return "dashboard.jsp";
 	}
+	
+	// -------- DETAILS -----------
+	@GetMapping("/expenses/{id}")
+	public String oneExpense(@PathVariable("id") Long id, Model model) {
+		Expense foundExpense = expenseService.oneExpense(id);
+		model.addAttribute("anExpense", foundExpense);
+		return "details.jsp";
+	}
 
 	// ==============CREATE (DATA BINDING)==============================
 	// Show the form
@@ -68,8 +76,8 @@ public class HomeController {
 //	}
 	
 	//DELETE BY ID +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	@DeleteMapping("/expense/delete/{id}")
-	public String deleteExpense(@PathVariable("id") Long id) {
+	@DeleteMapping("/expenses/delete/{id}")
+	public String processDelete(@PathVariable("id") Long id) {
 		expenseService.deleteExpense(id);
 		return "redirect:/";
 	}
