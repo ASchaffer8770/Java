@@ -1,12 +1,15 @@
 package com.alexschaffer.dojosandninjas.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -42,6 +45,9 @@ public class Dojo {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+    
+    @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
+    private List<Ninja> ninjas;
     
     //constructor
     public Dojo() {}
