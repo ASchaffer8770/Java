@@ -15,9 +15,19 @@
 <title>New Dojo</title>
 </head>
 <body>
-	<div class="container d-flex justify-content-center">
+	<div class="container justify-content-center">
 		<h1>New Dojo</h1>
 	</div>
-	<a href="/ninjas/new" class="btn btn-primary">New Ninja</a>
+	<div class="container justify-content-center">
+		<form:form action="/dojo/process" method="POST" modelAttribute="newDojo">
+			<p>
+				<form:label class="form-label" path="dojoname">Dojo Name:</form:label>
+				<form:input class="form-input" path="dojoname" />
+				<form:errors class="text-danger" path="dojoname" />
+			</p>
+			<button class="btn btn-success" type="submit">Create</button>
+		</form:form>
+		<a href="/ninjas/new" class="btn btn-primary">New Ninja</a>
+	</div>
 </body>
 </html>
