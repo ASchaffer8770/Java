@@ -39,13 +39,14 @@ public class MainService {
 	}
 	
 	//FIND ALL DOJOS
-	public List <Dojo> allDojos() {
+	public List<Dojo> allDojos() {
 		return dojoRepo.findAll();
 	}
 	
-	//DISPLAY NINJAS BELONGING TO ONE DOJO
-	public Dojo findDojo(Long id) {
-		Optional<Dojo> optionalDojo = dojoRepo.findById(id);
+	
+	//one dojo
+	public Dojo oneDojo(Long dojoId) {
+		Optional<Dojo> optionalDojo = dojoRepo.findById(dojoId);
 		if(optionalDojo.isPresent()) {
 			return optionalDojo.get();
 		} else {

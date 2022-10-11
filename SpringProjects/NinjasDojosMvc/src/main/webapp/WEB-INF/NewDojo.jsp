@@ -31,6 +31,7 @@
 		<button class="btn btn-primary" type="submit">Submit</button>
 	</form:form>
 	<a href="/ninja/new" class="btn btn-success">New Ninja</a>
+	<a href="/" class="btn btn-danger">Home</a>
 	</div>
 </body>
 </html>
