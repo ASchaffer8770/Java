@@ -1,7 +1,6 @@
-package com.alexschaffer.dojosandninjas.models;
+package com.alexschaffer.mvcdojoninjas.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,31 +8,40 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity 
-@Table(name="dojos")
-public class Dojo {
-	
+@Entity
+@Table(name="ninjas")
+public class Ninja {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-    @NotNull
-    @Size(min = 3, message="Location name must be longer than 3 characters.")
-    private String dojoname;
+	@NotNull
+	@Size(min = 3, message = "First name must be larger than 2 characters")
+	private String firstname;
 	
- // This will not allow the createdAt column to be updated after creation
+	@NotNull
+	@Size(min = 3, message = "Last name must be larger than 2 characters")
+	private String lastname;
+	
+	@NotNull
+	@Min(18)
+	private Integer age;
+	
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
+    
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
@@ -46,26 +54,39 @@ public class Dojo {
         this.updatedAt = new Date();
     }
     
-    @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
-    private List<Ninja> newNinjas;
+    //one to many connection to dojo
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="dojo_id")
+    private Dojo dojo;
     
     //constructor
-    public Dojo() {}
+    public Ninja() {}
     
     
     //getters and setters
-    
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDojoname() {
-		return dojoname;
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setDojoname(String dojoname) {
-		this.dojoname = dojoname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -79,12 +100,13 @@ public class Dojo {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public Dojo getDojo() {
+		return dojo;
+	}
+	public void setDojo(Dojo dojo) {
+		this.dojo = dojo;
+	}
     
     
-    
+		
 }
-
-
-
-
-

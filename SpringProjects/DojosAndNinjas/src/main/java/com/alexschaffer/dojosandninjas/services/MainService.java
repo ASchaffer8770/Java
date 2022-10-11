@@ -1,6 +1,7 @@
 package com.alexschaffer.dojosandninjas.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class MainService {
 	private NinjaRepository ninjaRepo;
 	
 	// find all Ninjas
-	public List<Ninja> allDonations() {
+	public List<Ninja> allNinjas() {
 		return ninjaRepo.findAll();
 	}
 	
@@ -34,4 +35,20 @@ public class MainService {
 	public Dojo createDojo(Dojo dojo) {
 		return dojoRepo.save(dojo);
 	}
+	
+	//All dojos
+	public List<Dojo> allDojos() {
+		return dojoRepo.findAll();
+	}
+	
+	//Show one Dojo
+	public Dojo oneDojo(Long id) {
+		Optional <Dojo> optionalDojo = dojoRepo.findById(id);
+		if (optionalDojo.isPresent()) {
+			return optionalDojo.get();
+		} else {
+			return null;
+		}
+	}
+	
 }

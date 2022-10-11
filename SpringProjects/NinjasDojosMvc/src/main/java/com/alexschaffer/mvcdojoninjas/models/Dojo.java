@@ -1,4 +1,4 @@
-package com.alexschaffer.dojosandninjas.models;
+package com.alexschaffer.mvcdojoninjas.models;
 
 import java.util.Date;
 import java.util.List;
@@ -18,22 +18,21 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity 
+@Entity
 @Table(name="dojos")
 public class Dojo {
-	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-    @NotNull
-    @Size(min = 3, message="Location name must be longer than 3 characters.")
-    private String dojoname;
+	@NotNull
+	@Size(min = 3, message = "Dojo name must be larger than 3 characters")
+	private String dojoname;
 	
- // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
+    
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
@@ -46,15 +45,22 @@ public class Dojo {
         this.updatedAt = new Date();
     }
     
+    //one to many connection to ninjas
     @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
-    private List<Ninja> newNinjas;
-    
-    //constructor
-    public Dojo() {}
-    
-    
-    //getters and setters
-    
+    private List<Ninja> ninjas;
+
+	//constructor
+	public Dojo() {}
+	
+	//getters and setters
+	
+	public List<Ninja> getNinjas() {
+		return ninjas;
+	}
+	public void setNinjas(List<Ninja> ninjas) {
+		this.ninjas = ninjas;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -79,12 +85,8 @@ public class Dojo {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
-    
-    
+	
+	
+
+	
 }
-
-
-
-
-

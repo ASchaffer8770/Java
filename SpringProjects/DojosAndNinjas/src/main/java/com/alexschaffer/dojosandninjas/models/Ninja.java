@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -35,7 +36,7 @@ public class Ninja {
     private String lastname;
     
     @NotNull
-    @Size(min = 18, message="Must be older than 18 to join the Dojo.")
+    @Min(18)
     private Integer age;
     
     @Column(updatable=false)
@@ -54,7 +55,7 @@ public class Ninja {
     }
 	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="dojo_id")
+    @JoinColumn(name="ninja_id")
     private Dojo dojo;
     
     //constructor
@@ -65,6 +66,24 @@ public class Ninja {
 		return id;
 	}
 
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	public Dojo getDojo() {
+		return dojo;
+	}
+	public void setDojo(Dojo dojo) {
+		this.dojo = dojo;
+	}
 	public void setId(Long id) {
 		this.id = id;
 	}

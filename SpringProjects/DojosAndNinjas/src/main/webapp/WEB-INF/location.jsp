@@ -15,6 +15,27 @@
 <title>Dojo Page</title>
 </head>
 <body>
-	<h1>Dojo Location Ninjas</h1>
+	<h1>${adojo.dojoname } Location Ninjas</h1>
+	<div class="container justify-content-center">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="eachNinja" items="${ninjaList } }">
+					<tr>
+						<td>${eachNinja.id }</td>
+						<td>${eachNinja.firstName }</td>
+						<td>${eachNinja.lastName }</td>
+						<td>${eachNinja.age }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
