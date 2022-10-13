@@ -1,10 +1,14 @@
 package com.alexschaffer.auth.models;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -34,6 +38,9 @@ public class User {
     @NotEmpty(message="Confirmed Password is required!")
     @Size(min=8, message="Password must be at least 8 characters")
     private String confirm;
+    
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<Book> books;
 	
 	public User () {}
 
@@ -76,6 +83,17 @@ public class User {
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+	
+	
 	
 	
 }

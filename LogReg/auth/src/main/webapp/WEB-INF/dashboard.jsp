@@ -24,11 +24,36 @@
 		<h1>Welcome, ${userName }</h1>
 	</div>
 	<div class="container mt-5">
-		<h4>This is your dashboard, but, for now we are still under
-			construction.</h4>
+		<h4>Books from everyone's shelves.</h4>
+	</div>
+	<div class="container mt-5 d-flex justify-content-evenly">
+		<a href="/books/new">+ Add a book to my Shelf!</a> <a href="/logout"
+			class="btn btn-danger">LogOut</a>
 	</div>
 	<div class="container mt-5">
-		<a href="/logout" class="btn btn-danger">LogOut</a>
+		<table class="table table-secondary table-hover">
+		<thead>
+			<tr>
+				<th> ID </th>
+				<th> Title</th>
+				<th> Author Name </th>
+				<th> Posted By </th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="eachBook" items="${bookList }">
+				<tr>
+					<td>${eachBook.id } </td>
+					<td> 
+					<a href="/books/${eachBook.id }">
+					<c:out value="${eachBook.title }"/></a>
+					</td>
+					<td> ${eachBook.author }</td>
+					<td> <c:out value="${eachBook.user.userName }" /></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>   
 	</div>
 </body>
 </html>
